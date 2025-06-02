@@ -3,7 +3,22 @@ base = "nextjs-base"
 publish = ".next"
 command = "pnpm run build"
 
+# Ensure Netlify uses Next.js runtime
+[functions]
+node_bundler = "nft"
+
+# Standard Next.js redirects and headers
+[[redirects]]
+from = "/_next/static/*"
+to = "/static/*"
+status = 200
+
 [[redirects]]
 from = "/"
 to = "/"
-status = 200 
+status = 200
+
+[[headers]]
+for = "/.next/*"
+[headers.values]
+"Cache-Control" = "public, max-age=31536000, immutable" 
