@@ -1,4 +1,9 @@
 [build]
 base = "nextjs-base"
 publish = ".next"
-command = "pnpm run build" 
+command = "pnpm run build"
+
+[[redirects]]
+from = "/"
+to = "/"
+status = 200 
