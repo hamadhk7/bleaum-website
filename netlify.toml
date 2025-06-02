@@ -1,0 +1,4 @@
+[build]
+base = "nextjs-base"
+publish = "nextjs-base/.next"
+command = "pnpm run build" 
