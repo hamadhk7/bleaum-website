@@ -5,7 +5,7 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
-import { page_routes } from "@/lib/routes-config";
+// import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
 /* Previous search implementation */
 // import AlgoliaSearch from "./algolia-search";
