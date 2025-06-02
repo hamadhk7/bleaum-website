@@ -42,7 +42,7 @@ program
       ) || "nextjs-base"; // Fallback to nextjs-base if no folder found
 
     // Correct repo URL for degit
-    const repo = `github:nisabmohd/Aria-Docs/${folder}`;
+    const repo = `${folder}`;
     const emitter = degit(repo);
     const projectPath = path.resolve(process.cwd(), projectDirectory);
 

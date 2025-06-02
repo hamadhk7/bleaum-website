@@ -6,14 +6,14 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex sm:min-h-[87.5vh] min-h-[82vh] flex-col sm:items-center justify-center text-center sm:py-8 py-14">
-      <Link
+      {/* <Link
         href="https://github.com/nisabmohd/Aria-Docs"
         target="_blank"
         className="mb-5 sm:text-lg flex items-center gap-2 underline underline-offset-4 sm:-mt-12"
       >
         Follow along on GitHub{" "}
         <MoveUpRightIcon className="w-4 h-4 font-extrabold" />
-      </Link>
+      </Link> */}
       <h1 className="text-[1.80rem] leading-8 sm:px-8 md:leading-[4.5rem] font-bold mb-4 sm:text-6xl text-left sm:text-center">
         Effortlessly build stunning documentation sites with flexibility for
         diverse projects.
