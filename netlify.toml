@@ -1,12 +1,11 @@
 [build]
   base = "nextjs-base"
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "pnpm install --no-frozen-lockfile && pnpm run build"
   publish = "out"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Fallback for SPA-like behavior
 [[redirects]]
   from = "/*"
   to = "/index.html"
