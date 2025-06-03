@@ -53,6 +53,7 @@ const socialLinks = [
 export function Footer() {
   const pathname = usePathname();
   const isDemoPage = pathname === '/demo' || pathname === '/demo/';
+  const isHomePage = pathname === '/' || pathname === '';
 
   return (
     <footer className="w-full relative overflow-hidden bg-background">
@@ -61,7 +62,7 @@ export function Footer() {
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#051530] via-white/5 to-transparent"></div> */}
       
       {/* Top Section with Features */}
-      {!isDemoPage && (
+      {isHomePage && (
         <div className="container mx-auto px-4 py-8 sm:py-12 relative">
           <div className="flex flex-row justify-center items-end gap-4 sm:gap-8 mb-8 flex-wrap">
             {features.map((label) => (
