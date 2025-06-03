@@ -20,10 +20,13 @@ const monoFont = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AriaDocs - Template",
-  metadataBase: new URL("https://ariadocs.vercel.app/"),
+  title: {
+    template: '%s - Bleaum',
+    default: 'Bleaum',
+  },
+  metadataBase: new URL("https://your-website-url.com"),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "Empowering businesses with innovative solutions for growth and success.",
 };
 
 export default function RootLayout({
@@ -34,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/bleaum.png" sizes="any" />
         <link
           rel="stylesheet"
           type="text/css"
