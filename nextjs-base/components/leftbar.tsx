@@ -33,9 +33,11 @@ export function SheetLeftbar() {
       <SheetContent className="flex flex-col gap-4 px-0" side="left">
         <DialogTitle className="sr-only">Menu</DialogTitle>
         <SheetHeader>
-          <SheetClose className="px-5" asChild>
-            <Logo />
-          </SheetClose>
+          <div className="pl-4">
+            <SheetClose className="px-5" asChild>
+              <Logo />
+            </SheetClose>
+          </div>
         </SheetHeader>
         <div className="flex flex-col gap-4 overflow-y-auto">
           <div className="flex flex-col gap-2.5 mt-3 mx-2 px-5">
