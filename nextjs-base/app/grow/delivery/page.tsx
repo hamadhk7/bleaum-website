@@ -53,7 +53,7 @@ export default function DeliveryPage() {
       </ul>
 
       <h2 className="text-2xl font-bold mt-10 mb-4">🔄 Deliver More, Stress Less</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">Built for scale.<br/>Whether you're running a single driver or a fleet, Bleaum helps you deliver more, faster—with less overhead.</p>
+      <p className="mb-6 text-gray-700 dark:text-gray-300">Built for scale.<br/>Whether you&apos;re running a single driver or a fleet, Bleaum helps you deliver more, faster—with less overhead.</p>
       <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
         <li>Assign and batch multiple orders per route</li>
         <li>Auto-prioritize based on time sensitivity</li>

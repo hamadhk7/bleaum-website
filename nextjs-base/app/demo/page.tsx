@@ -63,7 +63,7 @@ export default function DemoPage() {
           Is Your Dispensary Ready for a Serious Upgrade?
         </h2>
         <p className="text-muted-foreground text-base sm:text-lg px-4">
-          Book a walkthrough of the system that's setting the new standard in cannabis retail.
+          Book a walkthrough of the system that&apos;s setting the new standard in cannabis retail.
         </p>
       </div>
 
