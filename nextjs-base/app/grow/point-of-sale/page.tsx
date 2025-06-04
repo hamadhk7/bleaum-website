@@ -43,7 +43,7 @@ export default function BleaumPOSPage() {
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Compliance & Automation</h3>
       <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>✅ Real-time traceability:</b> Built-in syncing with METRC, plus deep audit trails and alerts for missing actions or violations—so you're never blindsided.</li>
+        <li><b>✅ Real-time traceability:</b> Built-in syncing with METRC, plus deep audit trails and alerts for missing actions or violations—so you&apos;re never blindsided.</li>
         <li><b>💳 Cannabis-friendly payments:</b> We support your reality. Bleaum connects with debit, cashless ATM, ACH, or Pay by Bank—no clunky workarounds.</li>
         <li><b>🧬 Strain-level control:</b> Track by strain, batch, and weight. Customize your SKUs to fit your exact operation, no compromises.</li>
       </ul>
