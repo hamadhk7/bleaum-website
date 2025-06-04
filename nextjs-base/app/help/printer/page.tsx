@@ -32,7 +32,7 @@ export default function PrinterHelpPage() {
           <p>Connect your printer via USB, Ethernet, or WiFi depending on your model.</p>
 
           <h3>2. Install Drivers</h3>
-          <p>Download and install the latest drivers from your printer manufacturer's website.</p>
+          <p>Download and install the latest drivers from your printer manufacturer&apos;s website.</p>
 
           <h3>3. Configure in POS</h3>
           <p>Navigate to Settings  Hardware Client to add and configure your printer.</p>

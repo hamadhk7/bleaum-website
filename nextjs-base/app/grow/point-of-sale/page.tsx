@@ -7,7 +7,7 @@ export default function BleaumPOSPage() {
       <h2 className="text-xl font-semibold mb-2 text-blue-700 dark:text-blue-300">Built for cannabis. Powered by precision.</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">
         A modern cannabis POS designed to help dispensaries, processors, and wholesalers grow smarter, scale faster, and operate seamlessly.<br/>
-        Bleaum isn't just a system—it's an ecosystem. With real-time inventory audits, advanced compliance tools, and A-to-Z retail automation, Bleaum helps operators stay ahead of the curve while delivering standout customer experiences.
+        Bleaum isn&apos;t just a system—it&apos;s an ecosystem. With real-time inventory audits, advanced compliance tools, and A-to-Z retail automation, Bleaum helps operators stay ahead of the curve while delivering standout customer experiences.
       </p>
       <Link href="/demo">
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 Book a demo</button>
@@ -35,8 +35,8 @@ export default function BleaumPOSPage() {
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Back of House</h3>
       <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>📊 Reporting that tells the whole story:</b> Sales, inventory, team performance, promotions, and more—track everything in real-time and drill into what's actually working.</li>
-        <li><b>🧾 Midday inventory audits:</b> Bleaum's biggest breakthrough: live, accurate inventory checks without shutting down operations. Count faster. Catch theft. Prevent waste. No late nights.</li>
+        <li><b>📊 Reporting that tells the whole story:</b> Sales, inventory, team performance, promotions, and more—track everything in real-time and drill into what&apos;s actually working.</li>
+        <li><b>🧾 Midday inventory audits:</b> Bleaum&apos;s biggest breakthrough: live, accurate inventory checks without shutting down operations. Count faster. Catch theft. Prevent waste. No late nights.</li>
         <li><b>🏷 Discounts made simple:</b> Set BOGOs, happy hours, stackable promos, and delivery-specific deals—across store, app, and web.</li>
         <li><b>📜 Compliance, not complexity:</b> Automated METRC syncing, audit logs, labeling, and error detection keep you compliant, not confused.</li>
       </ul>
@@ -50,8 +50,8 @@ export default function BleaumPOSPage() {
 
       <h2 className="text-2xl font-bold mt-10 mb-4">See it in action</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Bleaum is more than a POS. It's your operation's command center.<br/>
-        We don't just plug into cannabis—we power it.
+        Bleaum is more than a POS. It&apos;s your operation&apos;s command center.<br/>
+        We don&apos;t just plug into cannabis—we power it.
       </p>
       <Link href="/demo">
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 Book your personalized demo</button>

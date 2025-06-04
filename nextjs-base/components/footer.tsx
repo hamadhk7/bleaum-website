@@ -56,9 +56,7 @@ const socialLinks = [
 
 export function Footer() {
   const pathname = usePathname();
-  const isDemoPage = pathname === '/demo' || pathname === '/demo/';
-  const isHomePage = pathname === '/' || pathname === '';
-
+  
   return (
     <footer className="w-full relative overflow-hidden bg-background">
       {/* Decorative Elements */}

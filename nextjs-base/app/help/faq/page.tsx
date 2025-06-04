@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: "How do I reset my password?",
-    answer: "You can reset your password by clicking 'Forgot Password' on the login screen and following the email instructions."
+    answer: "You can reset your password by clicking &apos;Forgot Password&apos; on the login screen and following the email instructions."
   },
   {
     question: "How do I add new products to my inventory?",
@@ -54,7 +54,7 @@ export default function FAQPage() {
 
         <div className="mt-8 text-center">
           <p className="text-muted-foreground mb-4">
-            Didn't find what you were looking for?
+            Didn&apos;t find what you were looking for?
           </p>
           <a 
             href="/demo" 

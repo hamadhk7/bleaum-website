@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const helpSections = [
   {
@@ -59,7 +59,7 @@ export default function HelpPage() {
           <div className="bg-muted rounded-lg p-6">
             <h2 className="text-xl font-semibold mb-2">Still need help?</h2>
             <p className="text-muted-foreground mb-4">
-              Can't find what you're looking for? Our support team is here to help.
+              Can&apos;t find what you&apos;re looking for? Our support team is here to help.
             </p>
             <Link 
               href="/demo" 

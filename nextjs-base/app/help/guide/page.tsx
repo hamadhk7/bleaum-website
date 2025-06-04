@@ -31,7 +31,7 @@ export default function HelpGuidePage() {
             {/* Add Customer Section */}
             <div className="mb-16 pb-12 border-b border-slate-700/40">
               <h2 className="text-3xl font-bold mb-3 text-blue-400 drop-shadow-sm tracking-tight">Add Customer</h2>
-              <p className="text-gray-300 mb-4 leading-relaxed">Upload customer medical ID or driver's license manually, scan ID, or upload images.</p>
+              <p className="text-gray-300 mb-4 leading-relaxed">Upload customer medical ID or driver&apos;s license manually, scan ID, or upload images.</p>
               <Image src="/addcustomer.jpg" alt="Add Customer" width={600} height={300} className="rounded-xl shadow-lg my-6 mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
             </div>
 

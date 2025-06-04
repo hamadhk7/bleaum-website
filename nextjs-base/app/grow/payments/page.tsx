@@ -6,7 +6,7 @@ export default function PaymentsPage() {
       <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">Bleaum Pay: 🚀 Simple, Secure Cashless Payments for Dispensaries</h1>
       <h2 className="text-xl font-semibold mb-2 text-blue-700 dark:text-blue-300">More flexibility for your customers. More revenue for your store.</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Bleaum Pay is a fully integrated, ACH-based digital payment solution built right into the Bleaum platform—point of sale, delivery, and e-commerce. It's fast, compliant, and eliminates cash from your workflow while increasing sales and safety.
+        Bleaum Pay is a fully integrated, ACH-based digital payment solution built right into the Bleaum platform—point of sale, delivery, and e-commerce. It&apos;s fast, compliant, and eliminates cash from your workflow while increasing sales and safety.
       </p>
       <Link href="/demo">
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 See Bleaum Pay in Action</button>
@@ -52,7 +52,7 @@ export default function PaymentsPage() {
 
       <h2 className="text-2xl font-bold mt-10 mb-4">Ready to Ditch the Cash Drawer?</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Let's show you how Bleaum Pay is redefining cannabis payments—from register to doorstep.
+        Let&apos;s show you how Bleaum Pay is redefining cannabis payments—from register to doorstep.
       </p>
       <Link href="/demo">
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 Get a Demo of Bleaum Pay</button>

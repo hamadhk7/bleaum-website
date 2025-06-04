@@ -35,7 +35,7 @@ export default function EcommercePage() {
 
       <h2 className="text-2xl font-bold mt-10 mb-4">Quick online storefront</h2>
       <h3 className="text-xl font-semibold mb-2">Embedded menu</h3>
-      <p className="text-gray-700 dark:text-gray-300 mb-6">Our embedded menu is the perfect solution for stores looking to get up and running fast. Our menu seamlessly blends in with your website and can be launched with just one line of code. Plus, Dutchie's embedded menu includes SEO benefits to help get your menu in front of new, high-intent customers when they search for your products.</p>
+      <p className="text-gray-700 dark:text-gray-300 mb-6">Our embedded menu is the perfect solution for stores looking to get up and running fast. Our menu seamlessly blends in with your website and can be launched with just one line of code. Plus, Dutchie&apos;s embedded menu includes SEO benefits to help get your menu in front of new, high-intent customers when they search for your products.</p>
       <p className="text-gray-700 dark:text-gray-300 mb-6">As with all Ecommerce solutions, you'll have access to all of the powerful back-end functionality Dutchie offers.</p>
 
       <h3 className="text-xl font-semibold mb-2">SEO-friendly storefront</h3>
@@ -53,8 +53,8 @@ export default function EcommercePage() {
       </ul>
 
       <h3 className="text-xl font-semibold mb-2">Discounts</h3>
-      <p className="text-gray-700 dark:text-gray-300 mb-6">From simple sales to complex BOGO's, our highly advanced discounts engine was designed for maximum flexibility and to remain in lock-step with your in-store specials.</p>
-      <p className="text-gray-700 dark:text-gray-300 mb-6">An immersive menu experience comes packed with a dedicated "Specials" page, badges for items on sale, and customizable specials cards to help further drive sales.</p>
+      <p className="text-gray-700 dark:text-gray-300 mb-6">From simple sales to complex BOGO&apos;s, our highly advanced discounts engine was designed for maximum flexibility and to remain in lock-step with your in-store specials.</p>
+      <p className="text-gray-700 dark:text-gray-300 mb-6">An immersive menu experience comes packed with a dedicated &quot;Specials&quot; page, badges for items on sale, and customizable specials cards to help further drive sales.</p>
     </div>
   );
 } 

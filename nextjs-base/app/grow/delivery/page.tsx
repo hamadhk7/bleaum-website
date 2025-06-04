@@ -6,7 +6,7 @@ export default function DeliveryPage() {
       <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">🚚 Bleaum Last-Mile Delivery</h1>
       <h2 className="text-xl font-semibold mb-2 text-blue-700 dark:text-blue-300">Full Control. Faster Routes. Better Cannabis Delivery.</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Meet the most advanced last-mile delivery platform in cannabis—fully integrated with Bleaum POS and your ecommerce experience. From tap to doorstep, Bleaum's driver app and real-time dashboard make delivery effortless for your team and exceptional for your customers.
+        Meet the most advanced last-mile delivery platform in cannabis—fully integrated with Bleaum POS and your ecommerce experience. From tap to doorstep, Bleaum&apos;s driver app and real-time dashboard make delivery effortless for your team and exceptional for your customers.
       </p>
       <Link href="/demo">
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 Book a demo</button>
@@ -34,7 +34,7 @@ export default function DeliveryPage() {
       </ul>
 
       <h2 className="text-2xl font-bold mt-10 mb-4">📍 Dynamic Delivery Zones & GPS Routing</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">You're in control.<br/>Set rules based on zones, real-time GPS, time windows, or order value.</p>
+      <p className="mb-6 text-gray-700 dark:text-gray-300">You&apos;re in control.<br/>Set rules based on zones, real-time GPS, time windows, or order value.</p>
       <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
         <li>Zone-based or GPS-based route generation</li>
         <li>Dynamic delivery windows based on driver availability</li>
@@ -43,7 +43,7 @@ export default function DeliveryPage() {
       </ul>
 
       <h2 className="text-2xl font-bold mt-10 mb-4">📦 Inventory on Wheels, Tracked to the Gram</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">Compliance, handled.<br/>No more guesswork—track every gram of inventory across drivers, routes, and time.</p>
+      <p className="mb-6 text-gray-700 dark:text-gray-300">Compliance, handled.<br/>No more guesswork&apos;—track every gram of inventory across drivers, routes, and time.</p>
       <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
         <li>Real-time inventory syncing with POS</li>
         <li>Vehicle-specific limits and compliance caps</li>
@@ -72,7 +72,7 @@ export default function DeliveryPage() {
       </ul>
 
       <h2 className="text-2xl font-bold mt-10 mb-4">🚀 Deliver Cannabis the Right Way</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">Bleaum Last-Mile isn't an add-on—it's the future of cannabis delivery.<br/>Seamless. Compliant. Intelligent. Yours.</p>
+      <p className="mb-6 text-gray-700 dark:text-gray-300">Bleaum Last-Mile isn&apos;t an add-on—it&apos;s the future of cannabis delivery.<br/>Seamless. Compliant. Intelligent. Yours.</p>
       <Link href="/demo">
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 Schedule a demo to see it in action</button>
       </Link>
