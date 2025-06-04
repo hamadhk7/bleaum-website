@@ -9,7 +9,7 @@ export default function DeliveryPage() {
         Meet the most advanced last-mile delivery platform in cannabis—fully integrated with Bleaum POS and your ecommerce experience. From tap to doorstep, Bleaum&apos;s driver app and real-time dashboard make delivery effortless for your team and exceptional for your customers.
       </p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 Book a demo</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition"> Book a demo</button>
       </Link>
 
       <h2 className="text-2xl font-bold mt-8 mb-4">🔗 Seamless From Order to Arrival</h2>
@@ -74,7 +74,7 @@ export default function DeliveryPage() {
       <h2 className="text-2xl font-bold mt-10 mb-4">🚀 Deliver Cannabis the Right Way</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">Bleaum Last-Mile isn&apos;t an add-on—it&apos;s the future of cannabis delivery.<br/>Seamless. Compliant. Intelligent. Yours.</p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 Schedule a demo to see it in action</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition"> Schedule a demo to see it in action</button>
       </Link>
     </div>
   );

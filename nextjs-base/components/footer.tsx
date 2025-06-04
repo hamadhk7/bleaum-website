@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { LinkedinIcon, TwitterIcon, InstagramIcon } from "lucide-react";
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 
 // Copy of NAVLINKS structure from navbar.tsx
 const NAVBAR_LINKS = [
@@ -55,8 +54,6 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const pathname = usePathname();
-  
   return (
     <footer className="w-full relative overflow-hidden bg-background">
       {/* Decorative Elements */}

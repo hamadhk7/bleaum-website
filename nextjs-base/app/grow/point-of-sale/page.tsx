@@ -10,7 +10,7 @@ export default function BleaumPOSPage() {
         Bleaum isn&apos;t just a system—it&apos;s an ecosystem. With real-time inventory audits, advanced compliance tools, and A-to-Z retail automation, Bleaum helps operators stay ahead of the curve while delivering standout customer experiences.
       </p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 Book a demo</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition"> Book a demo</button>
       </Link>
 
       <h2 className="text-2xl font-bold mt-8 mb-4">A POS system that actually simplifies your cannabis business.</h2>
@@ -54,7 +54,7 @@ export default function BleaumPOSPage() {
         We don&apos;t just plug into cannabis—we power it.
       </p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 Book your personalized demo</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition"> Book your personalized demo</button>
       </Link>
     </div>
   );

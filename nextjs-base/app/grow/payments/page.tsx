@@ -9,7 +9,7 @@ export default function PaymentsPage() {
         Bleaum Pay is a fully integrated, ACH-based digital payment solution built right into the Bleaum platform—point of sale, delivery, and e-commerce. It&apos;s fast, compliant, and eliminates cash from your workflow while increasing sales and safety.
       </p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 See Bleaum Pay in Action</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition"> See Bleaum Pay in Action</button>
       </Link>
 
       <h2 className="text-2xl font-bold mt-8 mb-4">💸 Cash-Free Convenience with Bleaum Pay</h2>
@@ -55,7 +55,7 @@ export default function PaymentsPage() {
         Let&apos;s show you how Bleaum Pay is redefining cannabis payments—from register to doorstep.
       </p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 Get a Demo of Bleaum Pay</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition"> Get a Demo of Bleaum Pay</button>
       </Link>
     </div>
   );

@@ -58,13 +58,16 @@ export default function DemoPage() {
 
   return (
     <div className="flex flex-col items-center bg-background py-6 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-2xl text-center pt-6">
-        <h2 className="text-5xl font-extrabold uppercase text-white py-6 drop-shadow-lg">
-          Book A Demo
+      <div className="w-full max-w-2xl text-center pt-6 mb-6">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white drop-shadow-lg mb-2">
+          Is Your Dispensary Ready for a Serious Upgrade?
         </h2>
+        <p className="text-muted-foreground text-base sm:text-lg px-4">
+          Book a walkthrough of the system that's setting the new standard in cannabis retail.
+        </p>
       </div>
 
-      <div className="bg-card p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-2xl mt-10 sm:mt-20">
+      <div className="bg-card p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-2xl mt-6">
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full">
           <div>
             <label htmlFor="firstName" className="block text-sm font-medium text-foreground">First Name</label>

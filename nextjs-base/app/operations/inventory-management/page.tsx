@@ -9,7 +9,7 @@ export default function InventoryManagementPage() {
         With Bleaum, you don&apos;t wait until closing time to count inventory—you stay ahead, in real time. From midday audits to manager-reviewed blind counts, Bleaum&apos;s POS-integrated inventory system is built to eliminate loss, reduce overhead, and unlock precision.
       </p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">👉 Schedule a demo</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition"> Schedule a demo</button>
       </Link>
 
       <h2 className="text-2xl font-bold mt-8 mb-4">🚀 Real-Time Audits, Any Time of Day</h2>
@@ -71,7 +71,7 @@ export default function InventoryManagementPage() {
       <h2 className="text-2xl font-bold mt-10 mb-4">🔎 Bleaum Inventory = Operational Intelligence</h2>
       <p className="mb-6 text-gray-700 dark:text-gray-300">No fluff. No guesswork. Just smarter inventory in your hands, all day, every day.</p>
       <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">👉 See why operators call it the best in the industry</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition"> See why operators call it the best in the industry</button>
       </Link>
     </div>
   );
