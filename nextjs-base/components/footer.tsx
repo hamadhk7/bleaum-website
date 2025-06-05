@@ -36,15 +36,15 @@ const NAVBAR_LINKS = [
       { title: "Support", href: "/company/support" },
     ],
   },
-  {
-    title: "Help and Support",
-    links: [
-      { title: "Help Guide", href: "/help/guide" },
-      { title: "FAQ", href: "/help/faq" },
-      { title: "Printer Help", href: "/help/printer" },
-      { title: "API Documentation", href: "/help/api-docs" },
-    ],
-  },
+  // {
+  //   title: "Help and Support",
+  //   links: [
+  //     { title: "Help Guide", href: "/help/guide" },
+  //     { title: "FAQ", href: "/help/faq" },
+  //     { title: "Printer Help", href: "/help/printer" },
+  //     { title: "API Documentation", href: "/help/api-docs" },
+  //   ],
+  // },
 ];
 
 const socialLinks = [
@@ -55,30 +55,30 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="w-full relative overflow-hidden bg-background">
+    <footer className="w-full relative overflow-hidden bg-background border-t border-white/10">
       {/* Decorative Elements */}
       {/* <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div> */}
       {/* <div className="absolute inset-0 bg-gradient-to-b from-[#051530] via-white/5 to-transparent"></div> */}
       
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12 border-t border-white/10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
+      <div className="container mx-auto px-4 py-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-2 lg:col-span-2">
             <div className="mb-6">
               <Image 
                 src="/bleaum White.png"
                 alt="Bleaum Logo"
-                width={120}
-                height={32}
-                className="w-[120px] sm:w-[150px]"
+                width={130}
+                height={35}
+                className="w-[130px]"
                 priority
               />
             </div>
-            <p className="text-white/70 text-sm mb-6 max-w-[300px]">
+            <p className="text-white/70 text-sm mb-6 max-w-sm leading-relaxed">
               Empowering businesses with innovative solutions for growth and success.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-5">
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}

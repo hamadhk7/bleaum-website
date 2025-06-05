@@ -11,6 +11,7 @@ import { SheetClose } from "@/components/ui/sheet";
 // import AlgoliaSearch from "./algolia-search";
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 // Add type definitions at the top of the file
 type NavItem = {
@@ -85,16 +86,16 @@ export const NAVLINKS: NavItem[] = [
       { title: "Support", href: "/company/support", description: "Contact our support team", icon: LifeBuoyIcon },
     ],
   },
-  {
-    title: "Help and Support",
-    href: "/help",
-    children: [
-      { title: "Help Guide", href: "/help/guide", description: "Step-by-step product help", icon: HelpCircleIcon },
-      { title: "FAQ", href: "/help/faq", description: "Frequently asked questions", icon: MessageSquareIcon },
-      { title: "Printer Help", href: "/help/printer", description: "Printer setup and troubleshooting", icon: PrinterIcon },
-      { title: "API Documentation", href: "/help/api-docs", description: "Developer API docs", icon: Code2Icon },
-    ],
-  },
+  // {
+  //   title: "Help and Support",
+  //   href: "/help",
+  //   children: [
+  //     { title: "Help Guide", href: "/help/guide", description: "Step-by-step product help", icon: HelpCircleIcon },
+  //     { title: "FAQ", href: "/help/faq", description: "Frequently asked questions", icon: MessageSquareIcon },
+  //     { title: "Printer Help", href: "/help/printer", description: "Printer setup and troubleshooting", icon: PrinterIcon },
+  //     { title: "API Documentation", href: "/help/api-docs", description: "Developer API docs", icon: Code2Icon },
+  //   ],
+  // },
 ];
 
 /* Previous search implementation */
@@ -198,6 +199,24 @@ export function NavMenu({ isSheet = false }) {
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [isHelpSupportOpen, setIsHelpSupportOpen] = useState(false);
+
+  const pathname = usePathname();
+
+  // Function to determine if a main nav item should be active based on the current route
+  const isNavItemActive = (item: NavItem) => {
+    // Check if the current pathname exactly matches the item's href
+    if (item.href !== '#' && pathname === item.href) return true;
+    // Check if the current pathname starts with the item's href for section pages
+    if (item.href !== '#' && pathname.startsWith(item.href + '/')) return true;
+
+    // For items with children, check if any child or grandchild link is active
+    if (item.children) {
+      if (item.children.some(child => child.href && (pathname === child.href || (child.href !== '#' && pathname.startsWith(child.href + '/'))))) return true;
+      // Check grandchildren for Product, if applicable
+      if (item.title === "Product" && item.children.some(child => child.children?.some(subChild => subChild.href && (pathname === subChild.href || (subChild.href !== '#' && pathname.startsWith(subChild.href + '/')))))) return true;
+    }
+    return false;
+  };
 
   // Create refs for dropdown triggers and content
   const productRef = useRef<HTMLDivElement>(null);
@@ -303,23 +322,49 @@ export function NavMenu({ isSheet = false }) {
   return (
     <>
       {NAVLINKS.map((item) => {
+        // Determine if the main nav item should be highlighted
+        const shouldHighlight = (
+          (item.title === "Product" && isProductOpen) || isNavItemActive(item)
+        );
+         const shouldHighlightResources = (
+          (item.title === "Resources" && isResourcesOpen) || isNavItemActive(item)
+        );
+         const shouldHighlightCompany = (
+          (item.title === "Company" && isCompanyOpen) || isNavItemActive(item)
+        );
+         const shouldHighlightHelpSupport = (
+          (item.title === "Help and Support" && isHelpSupportOpen) || isNavItemActive(item)
+        );
+
         if (item.children) {
+          // Handle items with children (Product, Resources, Company, Help and Support)
+          const dropdownOpenState = 
+            item.title === "Product" ? isProductOpen : 
+            item.title === "Resources" ? isResourcesOpen : 
+            item.title === "Company" ? isCompanyOpen : 
+            item.title === "Help and Support" ? isHelpSupportOpen : 
+            false; // Default to false if title doesn't match
+
           if (item.title === "Product") {
             return (
               <div key={item.title} className="relative group" ref={productRef}>
                 <Anchor
                   activeClassName="!text-primary font-medium"
                   absolute
-                  className="flex items-center gap-1 text-sm text-white/70 cursor-pointer transition-colors duration-200 hover:text-blue-300 group-focus-within:text-blue-300"
+                  className={`flex items-center gap-1 text-sm cursor-pointer transition-colors duration-200 group-focus-within:text-blue-300 ${
+                    shouldHighlight 
+                      ? 'bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent' 
+                      : 'text-white/70 hover:text-blue-300'
+                  }`}
                   href={item.href}
                   onClick={handleProductClick}
                 >
                   {item.title}
-                  <svg className="ml-1 w-3 h-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  <svg className={`ml-1 w-3 h-3 transition-transform duration-200 ${dropdownOpenState || isNavItemActive(item) ? 'rotate-180' : 'group-hover:rotate-180 group-focus-within:rotate-180'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </Anchor>
                 {!isSheet && (
                   <div className={`dropdown-menu absolute left-0 mt-3 w-[90vw] max-w-[700px] bg-background border border-border rounded-xl shadow-2xl z-50 p-4 sm:p-8 ${
-                    isProductOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                    dropdownOpenState ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                   } md:block hidden`}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-6">
                       {item.children.map((category) => (
@@ -361,15 +406,17 @@ export function NavMenu({ isSheet = false }) {
                             const Icon = subItem.icon;
                             return (
                               <li key={subItem.title}>
-                                <Link href={subItem.href} onClick={handleLinkClick} className="flex items-start gap-2 sm:gap-3 p-2 rounded-md hover:bg-blue-300/10">
-                                  {Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300 flex-shrink-0 mt-0.5" />}
-                                  <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-medium text-foreground hover:text-blue-300">
-                                      {subItem.title}
-                                    </p>
-                                    {subItem.description && <p className="text-xs text-muted-foreground mt-0.5">{subItem.description}</p>}
-                                  </div>
-                                </Link>
+                                <SheetClose asChild>
+                                  <Link href={subItem.href} onClick={handleLinkClick} className="flex items-start gap-2 sm:gap-3 p-2 rounded-md hover:bg-blue-300/10">
+                                    {Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300 flex-shrink-0 mt-0.5" />}
+                                    <div className="flex-1 min-w-0">
+                                      <p className="text-sm font-medium text-foreground hover:text-blue-300">
+                                        {subItem.title}
+                                      </p>
+                                      {subItem.description && <p className="text-xs text-muted-foreground mt-0.5">{subItem.description}</p>}
+                                    </div>
+                                  </Link>
+                                </SheetClose>
                               </li>
                             );
                           })}
@@ -386,16 +433,20 @@ export function NavMenu({ isSheet = false }) {
                 <Anchor
                   activeClassName="!text-primary font-medium"
                   absolute
-                  className="flex items-center gap-1 text-sm text-white/70 cursor-pointer transition-colors duration-200 hover:text-blue-300 group-focus-within:text-blue-300"
+                  className={`flex items-center gap-1 text-sm cursor-pointer transition-colors duration-200 group-focus-within:text-blue-300 ${
+                    shouldHighlightResources
+                      ? 'bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent' 
+                      : 'text-white/70 hover:text-blue-300'
+                  }`}
                   href={item.href}
                   onClick={handleResourcesClick}
                 >
                   {item.title}
-                  <svg className="ml-1 w-3 h-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  <svg className={`ml-1 w-3 h-3 transition-transform duration-200 ${dropdownOpenState || isNavItemActive(item) ? 'rotate-180' : 'group-hover:rotate-180 group-focus-within:rotate-180'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </Anchor>
                 {!isSheet && (
                   <div className={`dropdown-menu absolute left-0 mt-3 w-72 bg-background border border-border rounded-xl shadow-2xl z-50 py-2 ${
-                    isResourcesOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                    dropdownOpenState ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                   } md:block hidden`}>
                     {item.children.map((child) => {
                       const Icon = child.icon;
@@ -423,10 +474,12 @@ export function NavMenu({ isSheet = false }) {
                       const Icon = child.icon;
                       return (
                         <div key={child.title} className="pl-4">
-                          <Link href={child.href} onClick={handleLinkClick} className="flex items-center gap-2 py-2 text-sm text-foreground hover:text-blue-300">
-                            {Icon && <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />}
-                            <span>{child.title}</span>
-                          </Link>
+                          <SheetClose asChild>
+                            <Link href={child.href} onClick={handleLinkClick} className="flex items-center gap-2 py-2 text-sm text-foreground hover:text-blue-300">
+                              {Icon && <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />}
+                              <span>{child.title}</span>
+                            </Link>
+                          </SheetClose>
                         </div>
                       );
                     })}
@@ -440,16 +493,20 @@ export function NavMenu({ isSheet = false }) {
                 <Anchor
                   activeClassName="!text-primary font-medium"
                   absolute
-                  className="flex items-center gap-1 text-sm text-white/70 cursor-pointer transition-colors duration-200 hover:text-blue-300 group-focus-within:text-blue-300"
+                  className={`flex items-center gap-1 text-sm cursor-pointer transition-colors duration-200 group-focus-within:text-blue-300 ${
+                    shouldHighlightCompany
+                      ? 'bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent' 
+                      : 'text-white/70 hover:text-blue-300'
+                  }`}
                   href={item.href}
                   onClick={handleCompanyClick}
                 >
                   {item.title}
-                  <svg className="ml-1 w-3 h-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  <svg className={`ml-1 w-3 h-3 transition-transform duration-200 ${dropdownOpenState || isNavItemActive(item) ? 'rotate-180' : 'group-hover:rotate-180 group-focus-within:rotate-180'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </Anchor>
                 {!isSheet && (
                   <div className={`dropdown-menu absolute left-0 mt-3 w-72 bg-background border border-border rounded-xl shadow-2xl z-50 py-2 ${
-                    isCompanyOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                    dropdownOpenState ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                   } md:block hidden`}>
                     {item.children.map((child) => {
                       const Icon = child.icon;
@@ -477,10 +534,12 @@ export function NavMenu({ isSheet = false }) {
                       const Icon = child.icon;
                       return (
                         <div key={child.title} className="pl-4">
-                          <Link href={child.href} onClick={handleLinkClick} className="flex items-center gap-2 py-2 text-sm text-foreground hover:text-blue-300">
-                            {Icon && <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />}
-                            <span>{child.title}</span>
-                          </Link>
+                          <SheetClose asChild>
+                            <Link href={child.href} onClick={handleLinkClick} className="flex items-center gap-2 py-2 text-sm text-foreground hover:text-blue-300">
+                              {Icon && <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />}
+                              <span>{child.title}</span>
+                            </Link>
+                          </SheetClose>
                         </div>
                       );
                     })}
@@ -494,16 +553,20 @@ export function NavMenu({ isSheet = false }) {
                 <Anchor
                   activeClassName="!text-primary font-medium"
                   absolute
-                  className="flex items-center gap-1 text-sm text-white/70 cursor-pointer transition-colors duration-200 hover:text-blue-300 group-focus-within:text-blue-300"
+                  className={`flex items-center gap-1 text-sm cursor-pointer transition-colors duration-200 group-focus-within:text-blue-300 ${
+                    shouldHighlightHelpSupport
+                      ? 'bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent' 
+                      : 'text-white/70 hover:text-blue-300'
+                  }`}
                   href={item.href}
                   onClick={handleHelpSupportClick}
                 >
                   {item.title}
-                  <svg className="ml-1 w-3 h-3 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  <svg className={`ml-1 w-3 h-3 transition-transform duration-200 ${dropdownOpenState || isNavItemActive(item) ? 'rotate-180' : 'group-hover:rotate-180 group-focus-within:rotate-180'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </Anchor>
                 {!isSheet && (
                   <div className={`dropdown-menu absolute left-0 mt-3 w-72 bg-background border border-border rounded-xl shadow-2xl z-50 py-2 ${
-                    isHelpSupportOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                    dropdownOpenState ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                   } md:block hidden`}>
                     {item.children.map((child) => {
                       const Icon = child.icon;
@@ -531,10 +594,12 @@ export function NavMenu({ isSheet = false }) {
                       const Icon = child.icon;
                       return (
                         <div key={child.title} className="pl-4">
-                          <Link href={child.href} onClick={handleLinkClick} className="flex items-center gap-2 py-2 text-sm text-foreground hover:text-blue-300">
-                            {Icon && <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />}
-                            <span>{child.title}</span>
-                          </Link>
+                          <SheetClose asChild>
+                            <Link href={child.href} onClick={handleLinkClick} className="flex items-center gap-2 py-2 text-sm text-foreground hover:text-blue-300">
+                              {Icon && <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />}
+                              <span>{child.title}</span>
+                            </Link>
+                          </SheetClose>
                         </div>
                       );
                     })}
@@ -544,12 +609,18 @@ export function NavMenu({ isSheet = false }) {
             );
           }
         } else {
+          // Handle links without children (like the Demo button, though not in NAVLINKS currently)
+          const shouldHighlight = isNavItemActive(item);
           const Comp = (
             <Anchor
               key={item.title + item.href}
               activeClassName="!text-primary font-medium"
               absolute
-              className="flex items-center gap-1 text-sm text-white/70 hover:text-blue-300"
+              className={`flex items-center gap-1 text-sm cursor-pointer transition-colors duration-200 hover:text-blue-300 ${
+                shouldHighlight 
+                  ? 'bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent' 
+                  : 'text-white/70'
+              }`}
               href={item.href}
               onClick={handleLinkClick}
             >
