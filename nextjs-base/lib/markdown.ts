@@ -111,11 +111,16 @@ export async function getDocsTocs(slug: string) {
   return extractedHeadings;
 }
 
-export function getPreviousNext(path: string) {
-  const index = page_routes.findIndex(({ href }) => href == `/${path}`);
+export function getPreviousNext(pathname: string) {
+  // Construct the full path as it appears in page_routes
+  const fullPath = `/docs/${pathname}`;
+  // Find the index using the full path
+  const index = page_routes.findIndex(({ href }) => href === fullPath);
+
+  // Return previous and next routes if they exist
   return {
-    prev: page_routes[index - 1],
-    next: page_routes[index + 1],
+    prev: index > 0 ? page_routes[index - 1] : undefined,
+    next: index < page_routes.length - 1 ? page_routes[index + 1] : undefined,
   };
 }
 
@@ -125,7 +130,7 @@ function sluggify(text: string) {
 }
 
 function getDocsContentPath(slug: string) {
-  return path.join(process.cwd(), "/contents/docs/", `${slug}/index.mdx`);
+  return path.join(process.cwd(), "content/docs", `${slug}.mdx`);
 }
 
 function justGetFrontmatterFromMD<Frontmatter>(rawMd: string): Frontmatter {
