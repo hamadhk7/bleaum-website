@@ -1,70 +1,105 @@
 'use client';
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function EcommercePage() {
   return (
-    <div className="container mx-auto px-4 py-10 max-w-3xl">
-      <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">Bleaum Ecommerce</h1>
-      <h2 className="text-xl font-semibold mb-2 text-blue-700 dark:text-blue-300">Branded, powerful, and fully connected ecommerce for modern dispensaries.</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Bleaum's white-labeled ecommerce solution gives your dispensary the ability to own your customer experience end-to-end. From a beautifully branded mobile app to a fully integrated web portal — it's your store, your data, and your community.
-      </p>
-      <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full mb-8 transition">Launch Your Store</button>
-      </Link>
+    <div className="container mx-auto px-4 py-10 max-w-4xl">
+      <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">Ecommerce</h1>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-8">Last updated June 5, 2025</p>
 
-      <h2 className="text-2xl font-bold mt-8 mb-4">Native Ecommerce Built for Growth</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Sell online with confidence using Bleaum's fully branded website and mobile app. Your name, your logo, your colors — your customers. No redirecting. No third-party branding.
-      </p>
+      <div className="prose dark:prose-invert max-w-none">
+        <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mb-8">
+          <h2 className="text-xl font-semibold mb-4">Notice at Collection:</h2>
+          <p>
+            Bleaum collects the categories of personal information listed in the Privacy Policy below, including any information you provide in a fillable field referencing this Privacy Policy. We collect this information to fulfill the purpose for which you are providing the personal information, to provide our services, to communicate with you (including about products or services that may be relevant to you), or as otherwise necessary or appropriate for our legitimate business purposes. By submitting your personal information, you agree to its processing in this manner. To learn more, including how to exercise any rights that may be available to you, please review the Privacy Policy below.
+          </p>
+        </div>
 
-      <h3 className="text-xl font-semibold mt-6 mb-2">White-Labeled Web Portal & Mobile App</h3>
-      <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>📲 Native Apps:</b> iOS & Android native apps for seamless mobile shopping</li>
-        <li><b>💻 Responsive Design:</b> Beautiful, responsive web design that works on any device</li>
-        <li><b>⚡ POS Integration:</b> Seamlessly syncs with your Bleaum POS system</li>
-      </ul>
+        <h2 className="text-2xl font-bold mt-8 mb-4">Welcome to Bleaum!</h2>
+        <p className="mb-6">
+          This Privacy Policy explains how Bleaum Inc. and its affiliates (&quot;Bleaum&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collect, use, and disclose your Personal Information when you access or use our products and services. These include our point-of-sale systems, mobile apps, eCommerce tools, payment processing services, hardware, APIs, customer accounts, and our websites (collectively, the &quot;Services&quot;).
+        </p>
 
-      <h3 className="text-xl font-semibold mt-8 mb-2">Memberships, Loyalty, and Rewards</h3>
-      <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>🎁 Automated Points:</b> Built-in points & rewards system that drives repeat purchases</li>
-        <li><b>🔍 QR Code Integration:</b> Scan a QR code in-store to earn points instantly</li>
-        <li><b>🤝 Referral Program:</b> Launch a "Refer a Friend" campaign in seconds</li>
-        <li><b>👑 VIP Tiers:</b> Customizable tiers & perks for your most loyal customers</li>
-      </ul>
+        <h2 className="text-2xl font-bold mt-8 mb-4">Information We Collect</h2>
+        <p className="mb-6">
+          We collect information that you provide directly to us, including when you create an account, use our Services, make a purchase, or communicate with us. This may include:
+        </p>
 
-      <h3 className="text-xl font-semibold mt-8 mb-2">Community-Driven Commerce</h3>
-      <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>📢 Smart Notifications:</b> Push notifications to both web and app users</li>
-        <li><b>✨ Event Promotion:</b> Promote flash sales, educational sessions, and product drops</li>
-        <li><b>📆 Recurring Events:</b> Grow engagement with recurring in-app events</li>
-      </ul>
+        <ul className="list-disc pl-6 mb-6">
+          <li>Contact information (name, email address, phone number, mailing address)</li>
+          <li>Account credentials</li>
+          <li>Payment information</li>
+          <li>Transaction history</li>
+          <li>Communications with us</li>
+          <li>Device and usage information</li>
+        </ul>
 
-      <h3 className="text-xl font-semibold mt-8 mb-2">Integrated Delivery from Checkout to Doorstep</h3>
-      <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>📈 Real-time Inventory:</b> Live product availability across all channels</li>
-        <li><b>🎯 Route Optimization:</b> Smart delivery route optimization for efficiency</li>
-        <li><b>🚚 Driver App:</b> Complete with OTP verification and live tracking</li>
-        <li><b>📬 Auto Updates:</b> Order updates sent to customers automatically</li>
-      </ul>
+        <h2 className="text-2xl font-bold mt-8 mb-4">How We Use Your Information</h2>
+        <p className="mb-6">
+          We use the information we collect to:
+        </p>
 
-      <h3 className="text-xl font-semibold mt-8 mb-2">One Ecosystem, Zero Friction</h3>
-      <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-gray-300">
-        <li><b>🔄 Perfect Sync:</b> No sync errors between systems</li>
-        <li><b>🔌 Unified Platform:</b> No need for 5 different vendors</li>
-        <li><b>📊 Single Dashboard:</b> One dashboard to manage it all</li>
-      </ul>
+        <ul className="list-disc pl-6 mb-6">
+          <li>Provide, maintain, and improve our Services</li>
+          <li>Process transactions and send related information</li>
+          <li>Send administrative information, such as updates and security alerts</li>
+          <li>Respond to your comments and questions</li>
+          <li>Personalize your experience</li>
+          <li>Monitor and analyze trends and usage</li>
+          <li>Protect against fraudulent or illegal activity</li>
+        </ul>
 
-      <h2 className="text-2xl font-bold mt-10 mb-4">Own Your Brand. Own Your Store.</h2>
-      <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Bleaum gives you the tools to build a dispensary that lasts.
-        Create a frictionless experience for your customers. Build loyalty. Deliver faster. Market smarter.
-      </p>
-      <Link href="/demo">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">Schedule Your Ecommerce Demo</button>
-      </Link>
+        <h2 className="text-2xl font-bold mt-8 mb-4">Information Sharing</h2>
+        <p className="mb-6">
+          We may share your information with:
+        </p>
+
+        <ul className="list-disc pl-6 mb-6">
+          <li>Service providers who perform services on our behalf</li>
+          <li>Business partners with your consent</li>
+          <li>Legal authorities when required by law</li>
+          <li>Other parties in connection with a business transaction</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-8 mb-4">Your Rights</h2>
+        <p className="mb-6">
+          Depending on your location, you may have certain rights regarding your personal information, including:
+        </p>
+
+        <ul className="list-disc pl-6 mb-6">
+          <li>Access to your personal information</li>
+          <li>Correction of inaccurate information</li>
+          <li>Deletion of your information</li>
+          <li>Restriction of processing</li>
+          <li>Data portability</li>
+          <li>Objection to processing</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-8 mb-4">Contact Us</h2>
+        <p className="mb-6">
+          If you have any questions about this Privacy Policy or our practices, please contact us at:
+        </p>
+
+        <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+          <p className="mb-2">Bleaum Inc.</p>
+          <p className="mb-2">123 Business Street</p>
+          <p className="mb-2">San Francisco, CA 94105</p>
+          <p className="mb-2">Email: privacy@bleaum.com</p>
+          <p>Phone: (555) 123-4567</p>
+        </div>
+
+        <div className="mt-8">
+          <Link
+            href="/contact"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            Contact Support
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 } 
