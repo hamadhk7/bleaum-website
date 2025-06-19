@@ -108,7 +108,7 @@ export default function Home() {
               </div>
 
               {/* Feature Tags */}
-              <div className="flex flex-wrap justify-center gap-3 text-sm font-medium text-blue-200">
+              <div className="flex flex-wrap justify-center gap-3 text-sm font-medium text-white">
                 {["Point of Sale", "Last Mile Delivery", "Mobile App", "Inventory", "Payments"].map((feature, index) => (
                   <span key={feature} className="px-4 py-2 bg-blue-900/60 text-blue-200 border border-blue-700 rounded-full shadow-sm">
                     {feature}
@@ -317,7 +317,7 @@ export default function Home() {
               className="order-1 lg:order-2"
             >
      
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Last Mile,{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   Locked In
@@ -476,7 +476,7 @@ export default function Home() {
               className="order-1 lg:order-2"
             >
             
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Receipts That{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   Just Work
@@ -584,7 +584,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Born From the{' '}
               <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                 Front Lines
@@ -675,7 +675,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
          
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Industries We Serve
             </h2>
           </div>
@@ -754,7 +754,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
          
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               What Customers Say
             </h2>
           </div>
