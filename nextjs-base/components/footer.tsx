@@ -36,15 +36,15 @@ const NAVBAR_LINKS = [
       { title: "Support", href: "/company/support" },
     ],
   },
-  {
-    title: "Help and Support",
-    links: [
-      { title: "Help Guide", href: "/help/guide" },
-      { title: "FAQ", href: "/help/faq" },
-      { title: "Printer Help", href: "/help/printer" },
-      { title: "API Documentation", href: "/help/api-docs" },
-    ],
-  },
+  // {
+  //   title: "Help and Support",
+  //   links: [
+  //     { title: "Help Guide", href: "/help/guide" },
+  //     { title: "FAQ", href: "/help/faq" },
+  //     { title: "Printer Help", href: "/help/printer" },
+  //     { title: "API Documentation", href: "/help/api-docs" },
+  //   ],
+  // },
 ];
 
 const socialLinks = [
@@ -62,7 +62,7 @@ export function Footer() {
       
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-10 items-start">
           {/* Brand Section */}
           <div className="md:col-span-2 lg:col-span-2 mb-8 md:mb-0">
             <div className="mb-6">

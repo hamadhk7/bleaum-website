@@ -375,10 +375,10 @@ export function NavMenu({ isSheet = false }) {
                               const Icon = subItem.icon;
                               return (
                                 <li key={subItem.title}>
-                                  <Link href={subItem.href} onClick={handleLinkClick} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 -m-2 sm:-m-3 rounded-md transition-colors duration-150 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 hover:outline hover:outline-blue-300 hover:outline-1">
+                                  <Link href={subItem.href} onClick={handleLinkClick} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 -m-2 sm:-m-3 rounded-md transition-colors duration-150 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 hover:bg-blue-300/10 hover:text-blue-300">
                                     {Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300 flex-shrink-0 mt-0.5" />}
                                     <div className="flex-1 min-w-0">
-                                      <p className="text-sm font-medium text-foreground hover:text-blue-300 flex items-center">
+                                      <p className="text-sm font-medium text-foreground group-hover:text-blue-300 flex items-center">
                                         {subItem.title}
                                         {subItem.isNew && (
                                           <span className="ml-2 inline-flex items-center rounded-md bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10 flex-shrink-0">NEW</span>

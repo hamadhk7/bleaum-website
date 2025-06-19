@@ -184,8 +184,8 @@ export default function Home() {
         </h2>
         <p className="text-lg mb-10 leading-relaxed">
           15 minutes is all it takes to see the difference.
-        </p>
-        <Link href="/demo">
+      </p>
+      <Link href="/demo">
           <button className={buttonVariants({ 
             variant: "secondary", 
             size: "lg", 
@@ -193,7 +193,7 @@ export default function Home() {
           })}>
             Schedule a Demo <ArrowRight className="w-5 h-5" />
           </button>
-        </Link>
+      </Link>
       </motion.section>
 
       {/* Footer Tagline */}
@@ -500,8 +500,8 @@ export default function Home() {
       >
         <div className="flex justify-center mb-8">
           <MessageSquare className="w-16 h-16 text-blue-400" />
-        </div>
-        
+      </div>
+
         <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
           ✉ Talk to Us
         </h2>
@@ -566,4 +566,4 @@ export default function Home() {
       </motion.section>
     </div>
   );
-}
+} 
