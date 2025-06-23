@@ -322,17 +322,17 @@ export function NavMenu({ isSheet = false }) {
   return (
     <>
       {NAVLINKS.map((item) => {
-        // Determine if the main nav item should be highlighted
-        const shouldHighlight = (
+        // Unique highlight variables for each nav item
+        const shouldHighlightProduct = (
           (item.title === "Product" && isProductOpen) || isNavItemActive(item)
         );
-         const shouldHighlightResources = (
+        const shouldHighlightResources = (
           (item.title === "Resources" && isResourcesOpen) || isNavItemActive(item)
         );
-         const shouldHighlightCompany = (
+        const shouldHighlightCompany = (
           (item.title === "Company" && isCompanyOpen) || isNavItemActive(item)
         );
-         const shouldHighlightHelpSupport = (
+        const shouldHighlightHelpSupport = (
           (item.title === "Help and Support" && isHelpSupportOpen) || isNavItemActive(item)
         );
 
@@ -352,7 +352,7 @@ export function NavMenu({ isSheet = false }) {
                   activeClassName="!text-primary font-medium"
                   absolute
                   className={`flex items-center gap-1 text-sm cursor-pointer transition-colors duration-200 group-focus-within:text-blue-300 ${
-                    shouldHighlight 
+                    shouldHighlightProduct 
                       ? 'bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent' 
                       : 'text-white/70 hover:text-blue-300'
                   }`}

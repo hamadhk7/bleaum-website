@@ -62,9 +62,9 @@ export function Footer() {
       
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-10 items-start">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-8 md:gap-10">
           {/* Brand Section */}
-          <div className="md:col-span-2 lg:col-span-2 mb-8 md:mb-0">
+          <div className="mb-8 md:mb-0 lg:w-1/2">
             <div className="mb-6">
               <Image 
                 src="/bleaum White.png"
@@ -93,26 +93,28 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links Sections */}
-          {NAVBAR_LINKS.map((section) => (
-            <div key={section.title} className="md:col-span-1 lg:col-span-1 mb-8 md:mb-0">
-              <h4 className="text-base font-semibold mb-4 capitalize bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                {section.title}
-              </h4>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.title}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-white transition-colors duration-300 text-sm inline-block hover:translate-x-1"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Links Sections - right aligned on desktop */}
+          <div className="flex flex-col sm:flex-row lg:justify-end lg:items-start gap-8 lg:gap-x-12 lg:gap-y-12 w-full lg:w-1/2">
+            {NAVBAR_LINKS.map((section) => (
+              <div key={section.title} className="mb-8 md:mb-0 min-w-[140px]">
+                <h4 className="text-base font-semibold mb-4 capitalize bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
+                  {section.title}
+                </h4>
+                <ul className="space-y-3">
+                  {section.links.map((link) => (
+                    <li key={link.title}>
+                      <Link
+                        href={link.href}
+                        className="text-white/70 hover:text-white transition-colors duration-300 text-sm inline-block hover:translate-x-1"
+                      >
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

@@ -1,7 +1,34 @@
+"use client";
 import Link from "next/link";
-import { SearchIcon, BookOpenIcon, BarChart2Icon, ShoppingBagIcon, BookTextIcon, DollarSignIcon, ClipboardCheckIcon, MegaphoneIcon, ShoppingCartIcon, BuildingIcon } from "lucide-react";
+import { SearchIcon, BookOpenIcon, BarChart2Icon, ShoppingBagIcon, BookTextIcon, DollarSignIcon, ClipboardCheckIcon, MegaphoneIcon, ShoppingCartIcon, BuildingIcon, Rocket, Wrench, TrendingUp } from "lucide-react";
+import React, { useState } from "react";
+
+// Sample guides data
+const guides = [
+  {
+    icon: <Rocket className="w-8 h-8 text-blue-500" />,
+    title: "Getting Started",
+    description: "Essential insights for launching your dispensary with confidence."
+  },
+  {
+    icon: <Wrench className="w-8 h-8 text-blue-500" />,
+    title: "Everyday Operations",
+    description: "Streamline daily workflows and reduce errors with proven processes."
+  },
+  {
+    icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
+    title: "Business Growth",
+    description: "Strategies, automations, and features to take your business to the next level."
+  }
+];
 
 export default function BleaumSOPsPage() {
+  const [search, setSearch] = useState("");
+  const filteredGuides = guides.filter(guide =>
+    guide.title.toLowerCase().includes(search.toLowerCase()) ||
+    guide.description.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto px-4 py-16 max-w-6xl">
       {/* Hero Section */}
@@ -21,7 +48,9 @@ export default function BleaumSOPsPage() {
           <div className="relative">
             <input
               type="text"
-              placeholder="🔍 Search guides…"
+              placeholder=" Search guides…"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
               className="w-full px-6 py-4 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-gray-900 dark:text-gray-100"
             />
             <SearchIcon className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -30,22 +59,22 @@ export default function BleaumSOPsPage() {
       </div>
 
       {/* Business Stages Section */}
-      <div className="mb-16">
+      {/* <div className="mb-16">
         <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100">What stage is your business in?</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              icon: "🟢",
+              icon: <Rocket className="w-8 h-8 text-blue-500" />,
               title: "Getting Started",
               description: "Essential insights for launching your dispensary with confidence."
             },
             {
-              icon: "🛠",
+              icon: <Wrench className="w-8 h-8 text-blue-500" />,
               title: "Everyday Operations",
               description: "Streamline daily workflows and reduce errors with proven processes."
             },
             {
-              icon: "📈",
+              icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
               title: "Business Growth",
               description: "Strategies, automations, and features to take your business to the next level."
             }
@@ -57,15 +86,15 @@ export default function BleaumSOPsPage() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Topics Section */}
       <div className="mb-16">
         <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100">What topics are you interested in?</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {[
-            "Compliance", "Delivery", "Ecommerce", "Emergency Planning", "Events",
-            "Integrations", "Inventory", "Loyalty", "Marketing", "Operational Planning",
+            "Compliance", "Delivery", "Ecommerce", "Emergency", "Events",
+            "Integrations", "Inventory", "Loyalty", "Marketing", "Operational",
             "Payments", "Point of Sale", "Sales", "Security", "Staffing"
           ].map((topic, index) => (
             <button
@@ -83,72 +112,16 @@ export default function BleaumSOPsPage() {
 
       {/* Featured Guides Section */}
       <div className="mb-16">
-        <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100">📘 Featured Guides</h3>
+        <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100"> Featured Guides</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              icon: BarChart2Icon,
-              title: "Inventory Management & Auditing",
-              category: "Everyday Operations",
-              description: "Best practices for real-time auditing, reducing shrinkage, and using Bleaum's midday audit tools."
-            },
-            {
-              icon: BookOpenIcon,
-              title: "Reporting Deep Dive: From Data to Decisions",
-              category: "Everyday Operations",
-              description: "Learn how to use Bleaum's smart reporting system with AI insights to improve margins and drive growth."
-            },
-            {
-              icon: ShoppingBagIcon,
-              title: "Maximizing Sales on Green Wednesday & 4/20",
-              category: "Business Growth",
-              description: "Promotions, loyalty tools, and campaign ideas designed to elevate your biggest sales days."
-            },
-            {
-              icon: BookTextIcon,
-              title: "Dispensary Glossary: 200+ Must-Know Terms",
-              category: "Getting Started",
-              description: "Your go-to reference for understanding cannabis retail language—perfect for new hires and operators."
-            },
-            {
-              icon: DollarSignIcon,
-              title: "Cash Handling: Best Practices for Cannabis Retail",
-              category: "Everyday Operations",
-              description: "Secure protocols for POS, cash drops, reconciliation, and preventing loss."
-            },
-            {
-              icon: ClipboardCheckIcon,
-              title: "Opening & Closing Checklists for Budtenders",
-              category: "Everyday Operations",
-              description: "Create structure, accountability, and a smooth shift turnover every time."
-            },
-            {
-              icon: MegaphoneIcon,
-              title: "Holiday Campaign Planner",
-              category: "Business Growth",
-              description: "Make the most of key retail moments with coordinated marketing and loyalty strategies."
-            },
-            {
-              icon: ShoppingCartIcon,
-              title: "Ecommerce Specials & Promotions Toolkit",
-              category: "Business Growth",
-              description: "Guide to running online discounts, managing inventory, and syncing promotions across platforms."
-            },
-            {
-              icon: BuildingIcon,
-              title: "Operating a Dispensary in New York: A Starter Guide",
-              category: "Getting Started",
-              description: "Navigate compliance and set yourself up for success in the Empire State."
-            }
-          ].map((guide, index) => (
+          {filteredGuides.map((guide, index) => (
             <div key={index} className="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-                  <guide.icon className="w-6 h-6 text-blue-500" />
+                  {guide.icon}
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{guide.title}</h4>
-                  <p className="text-sm text-blue-500">{guide.category}</p>
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-400">{guide.description}</p>

@@ -38,7 +38,6 @@ import {
   Fingerprint,
   ScrollText,
   AlertCircle,
-  HardDrive,
   Play,
   Eye,
   MapPin,
@@ -46,8 +45,24 @@ import {
   Phone,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [showVideo, setShowVideo] = useState(false);
+  const heroMessages = [
+    "Built for operators.",
+    "Loved by teams.",
+    "Trusted by growing retailers."
+  ];
+  const [currentMessage, setCurrentMessage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMessage((prev) => (prev + 1) % heroMessages.length);
+    }, 1200); // 1.2 seconds for a bit more readable effect
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#010a1a] overflow-hidden">
       {/* Global Background Elements */}
@@ -78,7 +93,7 @@ export default function Home() {
               className="max-w-5xl mx-auto"
             >
               <div className="mb-8">
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Bleaum.io</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Bleaum Platform</span>
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -88,13 +103,21 @@ export default function Home() {
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
-                Built for operators. Loved by teams. Trusted by growing retailers.
-              </p>
+              {/* Animated Hero Message */}
+              <motion.p
+                key={currentMessage}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
+                className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed min-h-[2.5rem]"
+              >
+                {heroMessages[currentMessage]}
+              </motion.p>
               
-              <p className="text-lg text-blue-200 mb-12 font-medium">
+              {/* <p className="text-lg text-blue-200 mb-12 font-medium">
                 Everything you need. Nothing you don't.
-              </p>
+              </p> */}
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                 <Link href="/demo">
@@ -102,7 +125,10 @@ export default function Home() {
                     Get a Live Demo <ArrowRight className="w-5 h-5 text-white" />
                   </button>
                 </Link>
-                <button className="border-2 border-blue-500 text-blue-200 px-8 py-4 rounded-xl text-lg font-semibold hover:border-cyan-400 hover:text-cyan-300 transition-all duration-300 flex items-center gap-2">
+                <button
+                  className="border-2 border-blue-500 text-blue-200 px-8 py-4 rounded-xl text-lg font-semibold hover:border-cyan-400 hover:text-cyan-300 transition-all duration-300 flex items-center gap-2"
+                  onClick={() => setShowVideo(true)}
+                >
                   <Play className="w-5 h-5 text-blue-400" /> Watch Video
                 </button>
               </div>
@@ -118,6 +144,44 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* Embedded Video Section with Modal */}
+      <section className="flex justify-center my-8 relative min-h-[500px]">
+        {showVideo && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center rounded-xl">
+            <div className="relative w-full max-w-5xl aspect-[16/9] rounded-xl overflow-hidden shadow-lg">
+              <button
+                className="absolute top-2 right-2 z-10 bg-white/80 hover:bg-white text-blue-600 rounded-full p-2 shadow"
+                onClick={() => setShowVideo(false)}
+                aria-label="Close video"
+              >
+                ×
+              </button>
+              <iframe
+                src="https://drive.google.com/file/d/1LJdzO0KnqrADnf9aHdVIyW3C9aglAdXc/preview"
+                width="100%"
+                height="100%"
+                allow="autoplay"
+                allowFullScreen
+                className="w-full h-full"
+                style={{ border: 'none' }}
+              ></iframe>
+            </div>
+          </div>
+        )}
+        {/* Video Placeholder with Themed Play Button */}
+        {!showVideo && (
+          <div className="w-full max-w-5xl aspect-[16/9] rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-900/60 to-cyan-900/60 flex items-center justify-center relative cursor-pointer group" onClick={() => setShowVideo(true)}>
+            <span className="absolute inset-0 bg-black/30" />
+            <button
+              className="relative z-10 flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg hover:scale-105 transition-transform duration-200 border-4 border-white/30 group-hover:border-cyan-400"
+              aria-label="Play video"
+            >
+              <Play className="w-12 h-12 text-white drop-shadow" />
+            </button>
+          </div>
+        )}
       </section>
 
       {/* All-in-One Platform Section */}
@@ -165,7 +229,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-[#101a32]/80 backdrop-blur-md border border-blue-900 rounded-2xl p-8 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 group text-center"
+                className="bg-[#101a32]/80 backdrop-blur-md border border-blue-900 rounded-3xl p-8 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 group text-center"
               >
                 <div className="mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-center">
                   {feature.icon}
@@ -233,20 +297,20 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-8 text-white shadow-2xl">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl p-8 text-white shadow-2xl">
                 <div className="grid grid-cols-2 gap-6 mb-8">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                     <Eye className="w-8 h-8 text-white mx-auto mb-3" />
                     <div className="text-2xl font-bold mb-1">Live</div>
                     <div className="text-blue-100 text-sm">Inventory View</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                     <Zap className="w-8 h-8 text-white mx-auto mb-3" />
                     <div className="text-2xl font-bold mb-1">Instant</div>
                     <div className="text-blue-100 text-sm">Updates</div>
                   </div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-white font-semibold">Current Stock Levels</span>
                     <span className="bg-green-400 text-green-900 px-2 py-1 rounded text-xs font-bold">LIVE</span>
@@ -290,18 +354,18 @@ export default function Home() {
               viewport={{ once: true }}
               className="order-2 lg:order-1"
             >
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-8 text-white shadow-2xl">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl p-8 text-white shadow-2xl">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
                   <MapPin className="w-12 h-12 text-white mb-4" />
                   <h3 className="text-xl font-bold mb-2">Smart Routing</h3>
                   <p className="text-blue-100">Optimized delivery routes in real-time</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
                     <div className="text-2xl font-bold mb-1">OTP</div>
                     <div className="text-blue-100 text-sm">Verification</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
                     <div className="text-2xl font-bold mb-1">Live</div>
                     <div className="text-blue-100 text-sm">Tracking</div>
                   </div>
@@ -327,7 +391,7 @@ export default function Home() {
                 Drivers get a connected app. You get smart routes, live tracking, OTP verification, and full control.
               </p>
 
-              <div className="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-xl p-6 border border-blue-200/50 mb-8">
+              <div className="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/50 mb-8">
                 <Quote className="w-8 h-8 text-blue-400 mb-4" />
                 <p className="text-gray-700 italic text-lg">
                   "We went from chaos to clockwork overnight."
@@ -406,22 +470,22 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-8 text-white shadow-2xl">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl p-8 text-white shadow-2xl">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
                   <Smartphone className="w-12 h-12 text-white mb-4" />
                   <h3 className="text-xl font-bold mb-2">Native Mobile Experience</h3>
                   <p className="text-blue-100">iOS & Android ready</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-4">
                     <ShoppingCart className="w-6 h-6 text-white" />
                     <span className="text-white">Seamless shopping cart</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-4">
                     <CreditCard className="w-6 h-6 text-white" />
                     <span className="text-white">Secure payments</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-4">
                     <Bell className="w-6 h-6 text-white" />
                     <span className="text-white">Push notifications</span>
                   </div>
@@ -449,19 +513,19 @@ export default function Home() {
               viewport={{ once: true }}
               className="order-2 lg:order-1"
             >
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-8 text-white shadow-2xl">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl p-8 text-white shadow-2xl">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
                   <Receipt className="w-12 h-12 text-white mb-4" />
                   <h3 className="text-xl font-bold mb-2">Smart Receipts</h3>
                   <p className="text-blue-100">Print, text, or email automatically</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
                     <div className="text-white font-semibold mb-2">Receipt Options:</div>
                     <div className="grid grid-cols-3 gap-2 text-center text-sm">
-                      <div className="bg-white/10 rounded p-2">Print</div>
-                      <div className="bg-white/10 rounded p-2">Text</div>
-                      <div className="bg-white/10 rounded p-2">Email</div>
+                      <div className="bg-white/10 rounded-2xl p-2">Print</div>
+                      <div className="bg-white/10 rounded-2xl p-2">Text</div>
+                      <div className="bg-white/10 rounded-2xl p-2">Email</div>
                     </div>
                   </div>
                 </div>
@@ -556,7 +620,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/70 backdrop-blur-sm border border-blue-200/50 rounded-2xl p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 text-center"
+                className="bg-white/70 backdrop-blur-sm border border-blue-200/50 rounded-3xl p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 text-center"
               >
                 <div className="bg-blue-100/70 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   {feature.icon}
@@ -595,7 +659,7 @@ export default function Home() {
               So we built Bleaum: a system that gives small dispensaries big-league tools—without the bloat.
             </p>
 
-            <div className="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/50 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/50 max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-4 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-lg">AP</span>
@@ -652,7 +716,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/70 backdrop-blur-sm border border-blue-200/50 rounded-2xl p-8 shadow-lg text-center"
+                className="bg-white/70 backdrop-blur-sm border border-blue-200/50 rounded-3xl p-8 shadow-lg text-center"
               >
                 <div className="bg-blue-100/70 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   {feature.icon}
@@ -701,7 +765,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/70 backdrop-blur-sm border border-blue-200/50 rounded-2xl p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 text-center"
+                className="bg-white/70 backdrop-blur-sm border border-blue-200/50 rounded-3xl p-8 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 text-center"
               >
                 <div className="mb-6">
                   {industry.icon}
@@ -771,7 +835,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/50 text-center"
+                className="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/50 text-center"
               >
                 <Quote className="w-8 h-8 text-blue-400 mx-auto mb-6" />
                 <p className="text-gray-700 italic text-lg leading-relaxed">
